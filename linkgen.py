@@ -1,4 +1,3 @@
-from urllib.error import HTTPError
 import datetime
 import pickle
 import os.path
@@ -36,16 +35,21 @@ def main():
 
     service = build('calendar', 'v3', credentials=creds)
 
-    # delete old event
-    with open('.eventid','r') as filer:
-        idread = filer.read()
-        try:
-            out = service.events().delete(calendarId='primary', eventId=idread).execute()
-        except HttpError as err:
-            if err.resp.status == 410:
-                print("[INFO] old event not found")
-            else:
-                print("[INFO] unknown error")
+    if not os.path.isfile('.eventid'):
+        print("[INFO] id file not found so creating one..")
+        with open('.eventid','w') as f:
+            pass
+    else:
+        # delete old event
+        with open('.eventid','r') as filer:
+            idread = filer.read()
+            try:
+                out = service.events().delete(calendarId='primary', eventId=idread).execute()
+            except HttpError as err:
+                if err.resp.status == 410:
+                    print("[INFO] old event not found")
+                else:
+                    print("[INFO] unknown error")
 
     # get date
     date = datetime.date.today()
