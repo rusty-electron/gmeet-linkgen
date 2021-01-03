@@ -4,8 +4,6 @@ A small python script that uses Google Calendar API to generate Google Meet link
 
 ### How to use:
 
-First you need to do the following steps:
-
 * install dependencies:
 
 ```python
