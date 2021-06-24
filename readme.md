@@ -26,3 +26,6 @@ Once you have completed the instructions on the site, download the `credentials.
 I suggest setting up a keybinding to run this script and then use a clipboard manager to pipe the output to your clipboard so that you can directly paste a googlemeet link when needed.
 
 > for xclip users: `python linkgen.py | xclip -selection primary`
+
+### updates
+The google api and its related code are modified quite often so it is possible that the script may not work at the time you are reading this. If that is the case then do let me know by creating an issue. I will try to fix it on the upcoming weekend or earlier.
